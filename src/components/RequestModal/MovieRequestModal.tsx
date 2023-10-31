@@ -141,6 +141,7 @@ const MovieRequestModal = ({
     data?.id,
     data?.title,
     is4k,
+    isAnime,
     onComplete,
     addToast,
     intl,
