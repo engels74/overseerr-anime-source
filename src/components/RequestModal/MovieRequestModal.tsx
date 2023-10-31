@@ -145,6 +145,7 @@ const MovieRequestModal = ({
     addToast,
     intl,
     hasPermission,
+    isAnime,
   ]);
 
   const cancelRequest = async () => {
