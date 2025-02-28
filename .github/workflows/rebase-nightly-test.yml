@@ -1,0 +1,75 @@
+name: Rebase Nightly Branch
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: feature-default-anime-instance-checkbox-nightly
+          fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove existing upstream remote (if it exists)
+        run: |
+          if git remote | grep -q upstream; then
+            git remote remove upstream
+          fi
+
+      - name: Add upstream remote (sct/overseerr)
+        run: |
+          git remote add upstream https://github.com/sct/overseerr.git
+
+      - name: Fetch upstream changes
+        run: |
+          git fetch upstream
+
+      - name: Attempt rebase with smart conflict resolution
+        run: |
+          # Try to rebase
+          if git rebase upstream/develop; then
+            echo "Rebase completed successfully without conflicts"
+          else
+            # While we have conflicts
+            while git diff --name-only --diff-filter=U | grep -q .; do
+              if git diff --name-only --diff-filter=U | grep -q "src/components/RequestModal/MovieRequestModal.tsx"; then
+                echo "Detected conflict in MovieRequestModal.tsx - using smart merge"
+                bash .github/scripts/merge_movie_request_modal.sh
+              else
+                # For other conflicts, use a simple strategy (preferring upstream)
+                for file in $(git diff --name-only --diff-filter=U); do
+                  echo "Resolving conflict in $file using upstream version"
+                  git checkout --theirs -- "$file"
+                  git add "$file"
+                done
+              fi
+              
+              # Continue the rebase
+              if git rebase --continue; then
+                echo "Rebase continued successfully"
+                break
+              fi
+            done
+            
+            # Check if we still have conflicts after trying to resolve them
+            if git diff --name-only --diff-filter=U | grep -q .; then
+              echo "Failed to resolve all conflicts automatically"
+              git rebase --abort
+              exit 1
+            fi
+          fi
+
+      - name: Push rebased branch
+        run: |
+          git push origin feature-default-anime-instance-checkbox-nightly --force
