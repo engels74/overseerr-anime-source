@@ -1,6 +1,7 @@
 import Accordion from '@app/components/Common/Accordion';
 import ImageFader from '@app/components/Common/ImageFader';
 import PageTitle from '@app/components/Common/PageTitle';
+import DeprecationWarning from '@app/components/DeprecationWarning';
 import LanguagePicker from '@app/components/Layout/LanguagePicker';
 import LocalLogin from '@app/components/Login/LocalLogin';
 import PlexLoginButton from '@app/components/PlexLoginButton';
@@ -86,7 +87,10 @@ const Login = () => {
           {intl.formatMessage(messages.signinheader)}
         </h2>
       </div>
-      <div className="relative z-50 mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="relative z-50 mt-8 px-4 sm:mx-auto sm:w-full sm:max-w-4xl">
+        <DeprecationWarning />
+      </div>
+      <div className="relative z-50 mt-4 sm:mx-auto sm:w-full sm:max-w-md">
         <div
           className="bg-gray-800 bg-opacity-50 shadow sm:rounded-lg"
           style={{ backdropFilter: 'blur(5px)' }}

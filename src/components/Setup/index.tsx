@@ -3,6 +3,7 @@ import Badge from '@app/components/Common/Badge';
 import Button from '@app/components/Common/Button';
 import ImageFader from '@app/components/Common/ImageFader';
 import PageTitle from '@app/components/Common/PageTitle';
+import DeprecationWarning from '@app/components/DeprecationWarning';
 import LanguagePicker from '@app/components/Layout/LanguagePicker';
 import SettingsPlex from '@app/components/Settings/SettingsPlex';
 import SettingsServices from '@app/components/Settings/SettingsServices';
@@ -77,6 +78,7 @@ const Setup = () => {
           alt="Logo"
         />
         <AppDataWarning />
+        <DeprecationWarning />
         <nav className="relative z-50">
           <ul
             className="divide-y divide-gray-600 rounded-md border border-gray-600 bg-gray-800 bg-opacity-50 md:flex md:divide-y-0"

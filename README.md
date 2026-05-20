@@ -15,9 +15,55 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
-**Overseerr** is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as **[Sonarr](https://sonarr.tv/)**, **[Radarr](https://radarr.video/)**, and **[Plex](https://www.plex.tv/)**!
+## ⚠️ Deprecation and security notice
 
-## Current Features
+**Overseerr Anime is deprecated and no longer maintained.** This fork was built
+around an old Overseerr pull request for anime-specific instances. Upstream
+Overseerr and Jellyseerr have since merged into the maintained
+[Seerr](https://github.com/seerr-team/seerr) project.
+
+Do not use this fork for new installs. The `overseerr-anime` Docker image will
+not receive further updates and may contain unfixed CVEs inherited from the old
+Overseerr dependency stack. Existing users should plan a migration away from
+this image/source branch.
+
+<details>
+<summary>Read more: known CVE context</summary>
+
+The v1.34.0-era source used by Overseerr Anime currently pins `axios` 1.3.4.
+GitHub advisory
+[GHSA-fvcv-3m26-pcqx](https://github.com/axios/axios/security/advisories/GHSA-fvcv-3m26-pcqx)
+tracks CVE-2026-40175, an Unrestricted Cloud Metadata Exfiltration vulnerability
+via a header injection chain. The advisory lists axios `>=1.0.0` as vulnerable
+and `>=1.15.0` as patched. This is separate from the axios package hijack
+incident.
+
+Seerr patched this in
+[v3.1.1](https://github.com/seerr-team/seerr/releases/tag/v3.1.1) or later.
+The v3.1.1 release was published on 2026-04-13. Overseerr Anime will not
+receive that dependency update.
+
+</details>
+
+There is no exact drop-in replacement for this fork today:
+
+- **Recommended path:** migrate to the official
+  [Seerr](https://github.com/seerr-team/seerr) image and follow the
+  [Seerr migration guide](https://docs.seerr.dev/migration-guide/).
+- **Closest workaround:** [Redirecterr](https://github.com/varthe/Redirecterr)
+  can route requests to different Sonarr/Radarr instances, but it is
+  webhook-driven and can conflict with any existing Seerr/Overseerr webhook
+  workflow.
+- **Future built-in option:** Seerr PR
+  [#2452](https://github.com/seerr-team/seerr/pull/2452) is intended to add
+  routing-rule behavior, but it is still a draft and has not been merged.
+
+This repository is a historical fork of **Overseerr**, a free and open source
+software application for managing requests for your media library. It integrates
+with existing services such as **[Sonarr](https://sonarr.tv/)**,
+**[Radarr](https://radarr.video/)**, and **[Plex](https://www.plex.tv/)**.
+
+## Historical Features
 
 - Full Plex integration. Authenticate and manage user access with Plex!
 - Easy integration with your existing services. Currently, Overseerr supports Sonarr and Radarr. More to come!
@@ -28,13 +74,13 @@
 - Support for various notification agents.
 - Mobile-friendly design, for when you need to approve requests on the go!
 
-With more features on the way! Check out our [issue tracker](https://github.com/sct/overseerr/issues) to see the features which have already been requested.
+No new features are planned for this fork.
 
 ## Getting Started
 
-Check out our documentation for instructions on how to install and run Overseerr:
+New installs should use Seerr instead of this fork:
 
-https://docs.overseerr.dev/getting-started/installation
+https://docs.seerr.dev/migration-guide/
 
 ## Preview
 
@@ -42,28 +88,27 @@ https://docs.overseerr.dev/getting-started/installation
 
 ## Support
 
-- Check out the [Overseerr Documentation](https://docs.overseerr.dev/) before asking for help. Your question might already be in the [FAQ](https://docs.overseerr.dev/support/faq).
-- You can get support on [Discord](https://discord.gg/overseerr).
-- You can ask questions in the Help category of our [GitHub Discussions](https://github.com/sct/overseerr/discussions).
-- Bug reports and feature requests can be submitted via [GitHub Issues](https://github.com/sct/overseerr/issues).
+This fork is no longer maintained. Please do not file new feature requests for
+`overseerr-anime`. For the maintained application, use the
+[Seerr documentation](https://docs.seerr.dev/) and
+[Seerr GitHub repository](https://github.com/seerr-team/seerr).
 
 ## API Documentation
 
-Our documentation is built on every commit and hosted at https://api-docs.overseerr.dev
-
-You can also access the API documentation from your local Overseerr install at http://localhost:5055/api-docs
+Historical Overseerr API documentation may still be available at
+https://api-docs.overseerr.dev, and local installs may expose
+http://localhost:5055/api-docs. Prefer Seerr documentation for maintained
+deployments.
 
 ## Community
 
-You can ask questions, share ideas, and more in [GitHub Discussions](https://github.com/sct/overseerr/discussions).
-
-If you would like to chat with other members of our growing community, [join the Overseerr Discord server](https://discord.gg/overseerr)!
-
-Our [Code of Conduct](https://github.com/sct/overseerr/blob/develop/CODE_OF_CONDUCT.md) applies to all Overseerr community channels.
+This fork no longer has active community support. For the maintained project,
+use the [Seerr GitHub repository](https://github.com/seerr-team/seerr).
 
 ## Contributing
 
-You can help improve Overseerr too! Check out our [Contribution Guide](https://github.com/sct/overseerr/blob/develop/CONTRIBUTING.md) to get started.
+This fork is deprecated and is not accepting new feature work. Please direct new
+development to [Seerr](https://github.com/seerr-team/seerr).
 
 ## Contributors ✨
 
