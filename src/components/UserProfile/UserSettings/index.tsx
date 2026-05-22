@@ -3,6 +3,7 @@ import LoadingSpinner from '@app/components/Common/LoadingSpinner';
 import PageTitle from '@app/components/Common/PageTitle';
 import type { SettingsRoute } from '@app/components/Common/SettingsTabs';
 import SettingsTabs from '@app/components/Common/SettingsTabs';
+import DeprecationWarning from '@app/components/DeprecationWarning';
 import ProfileHeader from '@app/components/UserProfile/ProfileHeader';
 import useSettings from '@app/hooks/useSettings';
 import { useUser } from '@app/hooks/useUser';
@@ -118,6 +119,7 @@ const UserSettings = ({ children }: UserSettingsProps) => {
       />
       <ProfileHeader user={user} isSettingsPage />
       <div className="mt-6">
+        <DeprecationWarning />
         <SettingsTabs settingsRoutes={settingsRoutes} />
       </div>
       <div className="mt-10 text-white">{children}</div>

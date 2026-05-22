@@ -1,6 +1,7 @@
 import PageTitle from '@app/components/Common/PageTitle';
 import type { SettingsRoute } from '@app/components/Common/SettingsTabs';
 import SettingsTabs from '@app/components/Common/SettingsTabs';
+import DeprecationWarning from '@app/components/DeprecationWarning';
 import globalMessages from '@app/i18n/globalMessages';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -69,6 +70,7 @@ const SettingsLayout = ({ children }: SettingsLayoutProps) => {
     <>
       <PageTitle title={intl.formatMessage(globalMessages.settings)} />
       <div className="mt-6">
+        <DeprecationWarning />
         <SettingsTabs settingsRoutes={settingsRoutes} />
       </div>
       <div className="mt-10 text-white">{children}</div>

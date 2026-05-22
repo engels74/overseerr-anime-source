@@ -47,6 +47,12 @@ const Layout = ({ children }: LayoutProps) => {
     }
   }, [setLocale, currentSettings.locale, user]);
 
+  const isSettingsRoute =
+    router.pathname.startsWith('/settings') ||
+    router.pathname.startsWith('/profile/settings') ||
+    (router.pathname.startsWith('/users/') &&
+      router.pathname.includes('/settings'));
+
   useEffect(() => {
     const updateScrolled = () => {
       if (window.pageYOffset > 20) {
@@ -126,7 +132,7 @@ const Layout = ({ children }: LayoutProps) => {
         <main className="relative top-16 z-0 focus:outline-none" tabIndex={0}>
           <div className="mb-6">
             <div className="max-w-8xl mx-auto px-4">
-              <DeprecationWarning />
+              {!isSettingsRoute && <DeprecationWarning />}
               {children}
             </div>
           </div>
