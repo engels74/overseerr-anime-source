@@ -78,7 +78,7 @@ const Setup = () => {
           alt="Logo"
         />
         <AppDataWarning />
-        <DeprecationWarning />
+        <DeprecationWarning allowSnooze={false} ignoreSnooze surface="setup" />
         <nav className="relative z-50">
           <ul
             className="divide-y divide-gray-600 rounded-md border border-gray-600 bg-gray-800 bg-opacity-50 md:flex md:divide-y-0"
