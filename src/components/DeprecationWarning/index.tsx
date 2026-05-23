@@ -128,7 +128,7 @@ const DeprecationWarning = ({
 
   return ReactDOM.createPortal(
     <div
-      className="bg-slate-950/90 fixed inset-0 z-[1000] flex min-h-screen items-center justify-center overflow-y-auto px-4 py-4 backdrop-blur-sm sm:px-6 sm:py-8"
+      className="fixed inset-0 z-[1000] flex min-h-screen items-center justify-center overflow-y-auto bg-black/80 px-4 py-4 backdrop-blur-sm sm:px-6 sm:py-8"
       data-testid="deprecation-warning"
       role="presentation"
     >
@@ -137,7 +137,7 @@ const DeprecationWarning = ({
         aria-modal="true"
         aria-labelledby="deprecation-warning-title"
         aria-describedby="deprecation-warning-description"
-        className="shadow-red-950/70 bg-slate-950 relative max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-2xl border border-red-200/30 text-red-50 shadow-2xl ring-1 ring-white/10 sm:max-h-[calc(100vh-4rem)]"
+        className="relative max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-2xl border border-red-200/30 bg-[#050816] text-red-50 shadow-2xl shadow-red-900/70 ring-1 ring-white/10 sm:max-h-[calc(100vh-4rem)]"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(248,113,113,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.14),transparent_32%)]" />
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-400 via-orange-300 to-red-600" />
@@ -146,7 +146,7 @@ const DeprecationWarning = ({
         <div className="relative p-5 sm:p-6 md:p-7">
           <div className="flex items-start justify-between gap-4">
             <div className="flex gap-4">
-              <div className="shadow-red-950/60 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-red-500 text-white shadow-lg ring-4 ring-red-200/10">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-red-500 text-white shadow-lg shadow-red-900/60 ring-4 ring-red-200/10">
                 <ShieldExclamationIcon className="h-7 w-7" />
               </div>
               <div>
@@ -220,7 +220,7 @@ const DeprecationWarning = ({
               <button
                 type="button"
                 onClick={snoozeWarning}
-                className="shadow-red-950/40 inline-flex w-full items-center justify-center rounded-xl border border-red-200 bg-red-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg transition hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-200 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-red-200 bg-red-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-red-900/40 transition hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-200 sm:w-auto"
               >
                 <ClockIcon className="mr-2 h-5 w-5" />
                 Remind me in 48 hours
