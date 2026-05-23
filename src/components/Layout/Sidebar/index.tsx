@@ -1,4 +1,5 @@
 import Badge from '@app/components/Common/Badge';
+import PersistentDeprecationNotice from '@app/components/DeprecationWarning/PersistentNotice';
 import VersionStatus from '@app/components/Layout/VersionStatus';
 import useClickOutside from '@app/hooks/useClickOutside';
 import { Permission, useUser } from '@app/hooks/useUser';
@@ -224,11 +225,12 @@ const Sidebar = ({
                         );
                       })}
                     </nav>
-                    {hasPermission(Permission.ADMIN) && (
-                      <div className="px-2">
+                    <div className="space-y-3 px-2">
+                      <PersistentDeprecationNotice surface="sidebar" />
+                      {hasPermission(Permission.ADMIN) && (
                         <VersionStatus onClick={() => setClosed()} />
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="w-14 flex-shrink-0">
@@ -320,11 +322,10 @@ const Sidebar = ({
                   );
                 })}
               </nav>
-              {hasPermission(Permission.ADMIN) && (
-                <div className="px-2">
-                  <VersionStatus />
-                </div>
-              )}
+              <div className="space-y-3 px-2">
+                <PersistentDeprecationNotice surface="sidebar" />
+                {hasPermission(Permission.ADMIN) && <VersionStatus />}
+              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import PageTitle from '@app/components/Common/PageTitle';
 import type { SettingsRoute } from '@app/components/Common/SettingsTabs';
 import SettingsTabs from '@app/components/Common/SettingsTabs';
 import DeprecationWarning from '@app/components/DeprecationWarning';
+import PersistentDeprecationNotice from '@app/components/DeprecationWarning/PersistentNotice';
 import ProfileHeader from '@app/components/UserProfile/ProfileHeader';
 import useSettings from '@app/hooks/useSettings';
 import { useUser } from '@app/hooks/useUser';
@@ -120,6 +121,7 @@ const UserSettings = ({ children }: UserSettingsProps) => {
       <ProfileHeader user={user} isSettingsPage />
       <div className="mt-6">
         <DeprecationWarning />
+        <PersistentDeprecationNotice surface="settings" />
         <SettingsTabs settingsRoutes={settingsRoutes} />
       </div>
       <div className="mt-10 text-white">{children}</div>
